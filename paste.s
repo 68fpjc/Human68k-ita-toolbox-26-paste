@@ -3,7 +3,7 @@
 * Itagaki Fumihiko 24-Apr-94  Create.
 * 1.0
 *
-* Usage: paste [ -sBCZ ] [ -d <ƒfƒŠƒ~ƒ^EƒŠƒXƒg> ] [ -- ] [ <ƒtƒ@ƒCƒ‹> ] ...
+* Usage: paste [ -sBCZ ] [ -d <ãƒ‡ãƒªãƒŸã‚¿ãƒ»ãƒªã‚¹ãƒˆ> ] [ -- ] [ <ãƒ•ã‚¡ã‚¤ãƒ«> ] ...
 *
 
 .include doscall.h
@@ -56,7 +56,7 @@ start:
 start1:
 		lea	bss_top(pc),a6
 		lea	stack_bottom(a6),a7
-		lea	$10(a0),a0			*  A0 : PDBƒAƒhƒŒƒX
+		lea	$10(a0),a0			*  A0 : PDBã‚¢ãƒ‰ãƒ¬ã‚¹
 		move.l	a7,d0
 		sub.l	a0,d0
 		move.l	d0,-(a7)
@@ -66,22 +66,22 @@ start1:
 	*
 		move.l	#-1,stdin(a6)
 	*
-	*  ˆø”•À‚ÑŠi”[ƒGƒŠƒA‚ğŠm•Û‚·‚é
+	*  å¼•æ•°ä¸¦ã³æ ¼ç´ã‚¨ãƒªã‚¢ã‚’ç¢ºä¿ã™ã‚‹
 	*
-		lea	1(a2),a0			*  A0 := ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚Ì•¶š—ñ‚Ìæ“ªƒAƒhƒŒƒX
-		bsr	strlen				*  D0.L := ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚Ì•¶š—ñ‚Ì’·‚³
+		lea	1(a2),a0			*  A0 := ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã®æ–‡å­—åˆ—ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹
+		bsr	strlen				*  D0.L := ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã®æ–‡å­—åˆ—ã®é•·ã•
 		addq.l	#1,d0
 		bsr	malloc
 		bmi	insufficient_memory
 
-		movea.l	d0,a1				*  A1 := ˆø”•À‚ÑŠi”[ƒGƒŠƒA‚Ìæ“ªƒAƒhƒŒƒX
+		movea.l	d0,a1				*  A1 := å¼•æ•°ä¸¦ã³æ ¼ç´ã‚¨ãƒªã‚¢ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹
 	*
-	*  ˆø”‚ğƒfƒR[ƒh‚µC‰ğß‚·‚é
+	*  å¼•æ•°ã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã—ï¼Œè§£é‡ˆã™ã‚‹
 	*
-		moveq	#0,d6				*  D6.W : ƒGƒ‰[EƒR[ƒh
-		bsr	DecodeHUPAIR			*  ˆø”‚ğƒfƒR[ƒh‚·‚é
-		movea.l	a1,a0				*  A0 : ˆø”ƒ|ƒCƒ“ƒ^
-		move.l	d0,d7				*  D7.L : ˆø”ƒJƒEƒ“ƒ^
+		moveq	#0,d6				*  D6.W : ã‚¨ãƒ©ãƒ¼ãƒ»ã‚³ãƒ¼ãƒ‰
+		bsr	DecodeHUPAIR			*  å¼•æ•°ã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã™ã‚‹
+		movea.l	a1,a0				*  A0 : å¼•æ•°ãƒã‚¤ãƒ³ã‚¿
+		move.l	d0,d7				*  D7.L : å¼•æ•°ã‚«ã‚¦ãƒ³ã‚¿
 		subq.l	#1,d0
 		bne	decode_opt_start
 
@@ -89,7 +89,7 @@ start1:
 		bsr	strcmp
 		beq	pasteboard
 decode_opt_start:
-		moveq	#0,d5				*  D5.L : ƒtƒ‰ƒO
+		moveq	#0,d5				*  D5.L : ãƒ•ãƒ©ã‚°
 		lea	default_dlist(pc),a2
 		move.l	a2,dlist(a6)
 decode_opt_loop1:
@@ -244,17 +244,17 @@ compile_dlist_store_1:
 compile_dlist_done:
 		move.l	a1,dlist_bottom(a6)
 	*
-	*  •W€“ü—Í‚ğØ‚è‘Ö‚¦‚é
+	*  æ¨™æº–å…¥åŠ›ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 	*
-		clr.w	-(a7)				*  •W€“ü—Í‚ğ
-		DOS	_DUP				*  •¡»‚µ‚½ƒnƒ“ƒhƒ‹‚©‚ç“ü—Í‚µC
+		clr.w	-(a7)				*  æ¨™æº–å…¥åŠ›ã‚’
+		DOS	_DUP				*  è¤‡è£½ã—ãŸãƒãƒ³ãƒ‰ãƒ«ã‹ã‚‰å…¥åŠ›ã—ï¼Œ
 		addq.l	#2,a7
 		move.l	d0,stdin(a6)
 		bmi	stdin_ok
 
 		clr.w	-(a7)
-		DOS	_CLOSE				*  •W€“ü—Í‚ÍƒNƒ[ƒY‚·‚éD
-		addq.l	#2,a7				*  ‚±‚¤‚µ‚È‚¢‚Æ ^C ‚â ^S ‚ªŒø‚©‚È‚¢
+		DOS	_CLOSE				*  æ¨™æº–å…¥åŠ›ã¯ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ï¼
+		addq.l	#2,a7				*  ã“ã†ã—ãªã„ã¨ ^C ã‚„ ^S ãŒåŠ¹ã‹ãªã„
 stdin_ok:
 		btst	#FLAG_s,d5
 		bne	paste_serial
@@ -262,11 +262,11 @@ stdin_ok:
 **  parallel
 **
 		*
-		*  “ü—ÍƒfƒXƒNƒŠƒvƒ^ƒe[ƒuƒ‹‚ğŠm•Û‚·‚é
+		*  å…¥åŠ›ãƒ‡ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ç¢ºä¿ã™ã‚‹
 		*
 		moveq	#-1,d2
-		moveq	#0,d4				*  D4.L <- ƒI[ƒvƒ“‚µ‚½ƒtƒ@ƒCƒ‹”
-		move.l	d7,d0				*  D7.L : “ü—Íƒtƒ@ƒCƒ‹”
+		moveq	#0,d4				*  D4.L <- ã‚ªãƒ¼ãƒ—ãƒ³ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«æ•°
+		move.l	d7,d0				*  D7.L : å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«æ•°
 		bne	paste_parallel_1
 
 		lea	static_fd(a6),a2
@@ -287,7 +287,7 @@ paste_parallel_1:
 		move.l	d0,inputs(a6)
 		movea.l	d0,a2
 		*
-		*  ‚·‚×‚Ä‚Ì“ü—Íƒtƒ@ƒCƒ‹‚ğƒI[ƒvƒ“‚·‚é
+		*  ã™ã¹ã¦ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹
 		*
 paste_parallel_2:
 		move.l	d7,num_files(a6)
@@ -303,19 +303,19 @@ paste_parallel_open_files_loop:
 
 		st	fd_last(a3)
 		move.l	d4,num_opened(a6)
-		bsr	alloc_buffer			*  ƒoƒbƒtƒ@‚ğŠm•Û‚·‚é
-		bsr	paste				*  Às
-		bra	all_done			*  I—¹
+		bsr	alloc_buffer			*  ãƒãƒƒãƒ•ã‚¡ã‚’ç¢ºä¿ã™ã‚‹
+		bsr	paste				*  å®Ÿè¡Œ
+		bra	all_done			*  çµ‚äº†
 ****************
 **  serial
 **
 paste_serial:
-		*  ƒoƒbƒtƒ@‚ğŠm•Û
+		*  ãƒãƒƒãƒ•ã‚¡ã‚’ç¢ºä¿
 		moveq	#1,d4
 		move.l	d4,num_files(a6)
-		bsr	alloc_buffer			*  ƒoƒbƒtƒ@‚ğŠm•Û‚·‚é
+		bsr	alloc_buffer			*  ãƒãƒƒãƒ•ã‚¡ã‚’ç¢ºä¿ã™ã‚‹
 
-		tst.l	d7				*  D7.L : “ü—Íƒtƒ@ƒCƒ‹”
+		tst.l	d7				*  D7.L : å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«æ•°
 		bne	paste_serial_1
 
 		lea	default_filearg(pc),a0
@@ -325,7 +325,7 @@ paste_serial_loop:
 		lea	static_fd(a6),a2
 		move.l	a2,inputs(a6)
 		moveq	#-1,d2
-		bsr	open_arg			*  ƒtƒ@ƒCƒ‹‚ğƒI[ƒvƒ“‚·‚é
+		bsr	open_arg			*  ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹
 		bmi	paste_serial_next
 
 		sf	fd_last(a2)
@@ -333,7 +333,7 @@ paste_serial_loop:
 		move.l	d0,num_opened(a6)
 		clr.b	lastchar(a6)
 		sf	cr_saved(a6)
-		bsr	paste				*  Às
+		bsr	paste				*  å®Ÿè¡Œ
 		move.b	lastchar(a6),d0
 		move.b	cr_saved(a6),d2
 		bsr	put_last_newline
@@ -347,10 +347,10 @@ exit_program:
 		move.l	stdin(a6),d0
 		bmi	exit_program_1
 
-		clr.w	-(a7)				*  •W€“ü—Í‚ğ
-		move.w	d0,-(a7)			*  Œ³‚É
-		DOS	_DUP2				*  –ß‚·D
-		DOS	_CLOSE				*  •¡»‚ÍƒNƒ[ƒY‚·‚éD
+		clr.w	-(a7)				*  æ¨™æº–å…¥åŠ›ã‚’
+		move.w	d0,-(a7)			*  å…ƒã«
+		DOS	_DUP2				*  æˆ»ã™ï¼
+		DOS	_CLOSE				*  è¤‡è£½ã¯ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ï¼
 exit_program_1:
 		move.w	d6,-(a7)
 		DOS	_EXIT2
@@ -436,7 +436,7 @@ open_arg_failure:
 *      none
 *
 * RETURN
-*      D0-D4/A1-A4   ”j‰ó
+*      D0-D4/A1-A4   ç ´å£Š
 ****************************************************************
 paste:
 paste_loop1:
@@ -445,8 +445,8 @@ paste_loop1:
 		movea.l	dlist(a6),a2
 		move.l	a2,dlistP(a6)
 paste_loop2:
-		movea.l	inpbuf_top(a6),a3		*  A3 : ‚±‚Ì“ü—Íƒtƒ@ƒCƒ‹—p‚Ìƒoƒbƒtƒ@‚Ìæ“ªƒAƒhƒŒƒX
-		movea.l	inputs(a6),a4			*  A4 : fdƒ|ƒCƒ“ƒ^
+		movea.l	inpbuf_top(a6),a3		*  A3 : ã“ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ç”¨ã®ãƒãƒƒãƒ•ã‚¡ã®å…ˆé ­ã‚¢ãƒ‰ãƒ¬ã‚¹
+		movea.l	inputs(a6),a4			*  A4 : fdãƒã‚¤ãƒ³ã‚¿
 		move.l	num_files(a6),d4		*  D4.L : loop counter
 paste_loop3:
 		movea.l	a4,a2
@@ -455,13 +455,13 @@ paste_loop3:
 
 		movea.l	d0,a2
 DoOne_1:
-		sf	d2				*  D2.B : CR ƒyƒ“ƒfƒBƒ“ƒOEƒtƒ‰ƒO
-		sf	d3				*  D3.B : 1•¶š‚Å‚à“ü—Í‚ª‚ ‚Á‚½‚©‚Ç‚¤‚©
+		sf	d2				*  D2.B : CR ãƒšãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒ»ãƒ•ãƒ©ã‚°
+		sf	d3				*  D3.B : 1æ–‡å­—ã§ã‚‚å…¥åŠ›ãŒã‚ã£ãŸã‹ã©ã†ã‹
 		moveq	#0,d0
 		tst.l	fd_fileno(a2)
 		bmi	DoOne_eof
 
-		movea.l	fd_buff_ptr(a2),a1		*  A1 : bufferƒ|ƒCƒ“ƒ^
+		movea.l	fd_buff_ptr(a2),a1		*  A1 : bufferãƒã‚¤ãƒ³ã‚¿
 		move.l	fd_buff_remain(a2),d1		*  D1.L : buffer data remain
 DoOne_loop1:
 		tst.l	d1
@@ -549,7 +549,7 @@ DoOne_done_last:
 		bne	DoOne_done_last_1
 
 		btst	#FLAG_somedone,d5
-		beq	DoOne_return			*  ‚·‚×‚Äclose‚µ‚½ -> I—¹
+		beq	DoOne_return			*  ã™ã¹ã¦closeã—ãŸ -> çµ‚äº†
 
 		bsr	flush_saved_delimiter
 DoOne_done_last_1:
@@ -660,7 +660,7 @@ flush_saved_cr_return:
 ****************************************************************
 put_last_newline:
 		tst.b	d0
-		beq	put_last_newline_1		*  ‰üs‚ª–³‚©‚Á‚½‚È‚ç‚ÎCR+LF‚ğo—Í
+		beq	put_last_newline_1		*  æ”¹è¡ŒãŒç„¡ã‹ã£ãŸãªã‚‰ã°CR+LFã‚’å‡ºåŠ›
 
 		btst	#FLAG_C,d5
 		beq	put_last_newline_2
@@ -734,14 +734,14 @@ write_fail:
 * alloc_buffer
 *
 * CALL
-*      D4.L   “ü—Íƒtƒ@ƒCƒ‹”
+*      D4.L   å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«æ•°
 *
 * RETURN
-*      D0-D2   ”j‰ó
+*      D0-D2   ç ´å£Š
 *****************************************************************
 alloc_buffer:
-		moveq	#1,d0				*  o—Í‚Í
-		bsr	is_chrdev			*  ƒLƒƒƒ‰ƒNƒ^EƒfƒoƒCƒX‚©H
+		moveq	#1,d0				*  å‡ºåŠ›ã¯
+		bsr	is_chrdev			*  ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ»ãƒ‡ãƒã‚¤ã‚¹ã‹ï¼Ÿ
 		seq	do_buffering(a6)
 		beq	input_max			*  -- block device
 
@@ -753,7 +753,7 @@ alloc_buffer:
 		btst	#FLAG_B,d5
 		bne	input_step_by_step
 
-		bset	#FLAG_C,d5			*  ‰üs‚ğ•ÏŠ·‚·‚é
+		bset	#FLAG_C,d5			*  æ”¹è¡Œã‚’å¤‰æ›ã™ã‚‹
 input_step_by_step:
 		move.l	#INPBUF_SIZE_MAX_TO_OUTPUT_TO_COOKED,d0
 		move.l	d0,inpbuf_size(a6)
@@ -765,8 +765,8 @@ input_max:
 		move.l	#$00ffffff,d0
 		move.l	d0,inpbuf_size(a6)
 inpbufsize_ok:
-		move.l	d0,d2				*  D2.L : inpbuf_size * ƒtƒ@ƒCƒ‹”
-		*  o—Íƒoƒbƒtƒ@‚ğŠm•Û‚·‚é
+		move.l	d0,d2				*  D2.L : inpbuf_size * ãƒ•ã‚¡ã‚¤ãƒ«æ•°
+		*  å‡ºåŠ›ãƒãƒƒãƒ•ã‚¡ã‚’ç¢ºä¿ã™ã‚‹
 		tst.b	do_buffering(a6)
 		beq	outbuf_ok
 
@@ -783,13 +783,13 @@ outbuf_ok:
 		bpl	inpbuf_ok
 
 		sub.l	#$81000000,d0
-		move.l	d0,d2				*  D2.L : Šm•Û‰Â”\Å‘åƒuƒƒbƒN‚ÌƒTƒCƒY
-		move.l	d4,d1				*  ‚»‚ê‚ğƒtƒ@ƒCƒ‹”‚Å
-		bsr	divul				*  Š„‚é
+		move.l	d0,d2				*  D2.L : ç¢ºä¿å¯èƒ½æœ€å¤§ãƒ–ãƒ­ãƒƒã‚¯ã®ã‚µã‚¤ã‚º
+		move.l	d4,d1				*  ãã‚Œã‚’ãƒ•ã‚¡ã‚¤ãƒ«æ•°ã§
+		bsr	divul				*  å‰²ã‚‹
 		move.l	d0,inpbuf_size(a6)
-		beq	insufficient_memory		*  0 ‚È‚ç‚ÎƒGƒ‰[
+		beq	insufficient_memory		*  0 ãªã‚‰ã°ã‚¨ãƒ©ãƒ¼
 		*
-		*  ‰Â”\‚È‚ç‚Î inpbuf_size ‚ğ BLOCKSIZE ‚Ì®””{‚Æ‚·‚é
+		*  å¯èƒ½ãªã‚‰ã° inpbuf_size ã‚’ BLOCKSIZE ã®æ•´æ•°å€ã¨ã™ã‚‹
 		*
 		move.l	#BLOCKSIZE,d1
 		cmp.l	d1,d0
@@ -875,15 +875,15 @@ malloc:
 
 msg_myname:		dc.b	'paste: ',0
 word_board:		dc.b	'-board',0
-msg_no_memory:		dc.b	'ƒƒ‚ƒŠ‚ª‘«‚è‚Ü‚¹‚ñ',CR,LF,0
-msg_open_fail:		dc.b	': ƒI[ƒvƒ“‚Å‚«‚Ü‚¹‚ñ',CR,LF,0
-msg_read_fail:		dc.b	': “ü—ÍƒGƒ‰[',CR,LF,0
-msg_write_fail:		dc.b	'paste: o—ÍƒGƒ‰[',CR,LF,0
-msg_stdin:		dc.b	'- •W€“ü—Í -',0
-msg_illegal_option:	dc.b	'•s³‚ÈƒIƒvƒVƒ‡ƒ“ -- ',0
-msg_needs_dlist:	dc.b	'-d ‚É‚Í <ƒfƒŠƒ~ƒ^EƒŠƒXƒg> ˆø”‚ª•K—v‚Å‚·',0
-msg_usage:		dc.b	CR,LF,'g—p–@:  paste [-sBCZ] [-d <ƒfƒŠƒ~ƒ^EƒŠƒXƒg>] [--] [<ƒtƒ@ƒCƒ‹>] ...',CR,LF,0
-msg_board:	dc.b	'pasteboard n. 1 Œú†, ƒ{[ƒ‹†. 2y‘­zƒJ[ƒh, –¼h, Ø•„, ƒgƒ‰ƒ“ƒvD‚È‚Ç. 3 †»‚Ì; ‚É‚¹‚Ì.',CR,LF,0
+msg_no_memory:		dc.b	'ãƒ¡ãƒ¢ãƒªãŒè¶³ã‚Šã¾ã›ã‚“',CR,LF,0
+msg_open_fail:		dc.b	': ã‚ªãƒ¼ãƒ—ãƒ³ã§ãã¾ã›ã‚“',CR,LF,0
+msg_read_fail:		dc.b	': å…¥åŠ›ã‚¨ãƒ©ãƒ¼',CR,LF,0
+msg_write_fail:		dc.b	'paste: å‡ºåŠ›ã‚¨ãƒ©ãƒ¼',CR,LF,0
+msg_stdin:		dc.b	'- æ¨™æº–å…¥åŠ› -',0
+msg_illegal_option:	dc.b	'ä¸æ­£ãªã‚ªãƒ—ã‚·ãƒ§ãƒ³ -- ',0
+msg_needs_dlist:	dc.b	'-d ã«ã¯ <ãƒ‡ãƒªãƒŸã‚¿ãƒ»ãƒªã‚¹ãƒˆ> å¼•æ•°ãŒå¿…è¦ã§ã™',0
+msg_usage:		dc.b	CR,LF,'ä½¿ç”¨æ³•:  paste [-sBCZ] [-d <ãƒ‡ãƒªãƒŸã‚¿ãƒ»ãƒªã‚¹ãƒˆ>] [--] [<ãƒ•ã‚¡ã‚¤ãƒ«>] ...',CR,LF,0
+msg_board:	dc.b	'pasteboard n. 1 åšç´™, ãƒœãƒ¼ãƒ«ç´™. 2ã€ä¿—ã€‘ã‚«ãƒ¼ãƒ‰, ååˆº, åˆ‡ç¬¦, ãƒˆãƒ©ãƒ³ãƒ—æœ­ãªã©. 3 ç´™è£½ã®; ã«ã›ã®.',CR,LF,0
 default_filearg:	dc.b	'-',0
 default_dlist:		dc.b	HT,0
 *****************************************************************
